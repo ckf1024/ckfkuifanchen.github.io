@@ -16,23 +16,23 @@
   <meta name="author" content="kuifanchen">
   <meta name="keywords" content="">
   
-    <meta name="description" content="记录如何使用 Hexo 发布个人博客，Markdown语法等，主要为记录源文件格式。 一、Hexo基本操作1.1 建站指定文件夹中新建立网站:hexo init &lt;folder&gt; 进入新建文件夹：cd &lt;folder&gt; 安装依赖：npm install 1.2 创建新的md文件创建新的文章：hexo new [post] &lt;title&gt; 创建新的草稿：hexo">
+    <meta name="description" content="记录如何使用jetson边缘部署检测模型，涉及jetson板子的重装系统、基本配置、环境搭建等。   重装系统 装机提前准备 安装jetson Linux系统 系统迁移至固态硬盘   基本配置 远程连接 配置代理 远程可视化桌面连接   环境搭建 支持cuad的opencv库 torch and torchvision librealsense    重装系统装机提前准备 一台装有Ubuntu系">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo使用">
-<meta property="og:url" content="http://example.com/2024/06/12/Hexo%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:title" content="jetson xavier nx 使用历程">
+<meta property="og:url" content="http://example.com/2024/06/14/jetson-xavier-nx-%E4%BD%BF%E7%94%A8%E5%8E%86%E7%A8%8B/index.html">
 <meta property="og:site_name" content="chenkuifan">
-<meta property="og:description" content="记录如何使用 Hexo 发布个人博客，Markdown语法等，主要为记录源文件格式。 一、Hexo基本操作1.1 建站指定文件夹中新建立网站:hexo init &lt;folder&gt; 进入新建文件夹：cd &lt;folder&gt; 安装依赖：npm install 1.2 创建新的md文件创建新的文章：hexo new [post] &lt;title&gt; 创建新的草稿：hexo">
+<meta property="og:description" content="记录如何使用jetson边缘部署检测模型，涉及jetson板子的重装系统、基本配置、环境搭建等。   重装系统 装机提前准备 安装jetson Linux系统 系统迁移至固态硬盘   基本配置 远程连接 配置代理 远程可视化桌面连接   环境搭建 支持cuad的opencv库 torch and torchvision librealsense    重装系统装机提前准备 一台装有Ubuntu系">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%EF%BC%8C%E6%9C%AC%E5%9C%B0%E9%93%BE%E6%8E%A5%E6%88%96%E8%80%85URL%E5%9C%B0%E5%9D%80">
-<meta property="article:published_time" content="2024-06-12T08:44:41.000Z">
-<meta property="article:modified_time" content="2024-07-30T02:45:00.338Z">
+<meta property="og:image" content="http://example.com/2024/06/14/jetson-xavier-nx-%E4%BD%BF%E7%94%A8%E5%8E%86%E7%A8%8B/jetson-xavier-nx-%E4%BD%BF%E7%94%A8%E5%8E%86%E7%A8%8B/%E5%BC%95%E8%84%9A%E8%BF%9E%E6%8E%A5.jpg">
+<meta property="article:published_time" content="2024-06-14T01:08:45.000Z">
+<meta property="article:modified_time" content="2024-07-11T01:36:52.393Z">
 <meta property="article:author" content="kuifanchen">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%EF%BC%8C%E6%9C%AC%E5%9C%B0%E9%93%BE%E6%8E%A5%E6%88%96%E8%80%85URL%E5%9C%B0%E5%9D%80">
+<meta name="twitter:image" content="http://example.com/2024/06/14/jetson-xavier-nx-%E4%BD%BF%E7%94%A8%E5%8E%86%E7%A8%8B/jetson-xavier-nx-%E4%BD%BF%E7%94%A8%E5%8E%86%E7%A8%8B/%E5%BC%95%E8%84%9A%E8%BF%9E%E6%8E%A5.jpg">
   
   
   
-  <title>Hexo使用 - chenkuifan</title>
+  <title>jetson xavier nx 使用历程 - chenkuifan</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -227,7 +227,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hexo使用"></span>
+            <span id="subtitle" data-typed-text="jetson xavier nx 使用历程"></span>
           
         </div>
 
@@ -238,8 +238,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-06-12 16:44" pubdate>
-          2024年6月12日 下午
+        <time datetime="2024-06-14 09:08" pubdate>
+          2024年6月14日 上午
         </time>
       </span>
     
@@ -250,7 +250,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          354 字
+          448 字
         
       </span>
     
@@ -261,7 +261,7 @@
         
         
         
-          3 分钟
+          4 分钟
         
       </span>
     
@@ -306,70 +306,58 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hexo使用</h1>
+            <h1 id="seo-header">jetson xavier nx 使用历程</h1>
             
             
               <div class="markdown-body">
                 
-                <p>记录如何使用 Hexo 发布个人博客，Markdown语法等，主要为记录源文件格式。</p>
-<h1 id="一、Hexo基本操作"><a href="#一、Hexo基本操作" class="headerlink" title="一、Hexo基本操作"></a>一、Hexo基本操作</h1><h2 id="1-1-建站"><a href="#1-1-建站" class="headerlink" title="1.1 建站"></a>1.1 建站</h2><p>指定文件夹中新建立网站:<code>hexo init &lt;folder&gt;</code></p>
-<p>进入新建文件夹：<code>cd &lt;folder&gt;</code></p>
-<p>安装依赖：<code>npm install</code></p>
-<h2 id="1-2-创建新的md文件"><a href="#1-2-创建新的md文件" class="headerlink" title="1.2 创建新的md文件"></a>1.2 创建新的md文件</h2><p>创建新的文章：<code>hexo new [post] &lt;title&gt;</code></p>
-<p>创建新的草稿：<code>hexo new [draft] &lt;title&gt;</code></p>
-<p>创建新的页面：<code>hexo new [page] &lt;title&gt;</code></p>
-<h2 id="1-3-其他常用命令"><a href="#1-3-其他常用命令" class="headerlink" title="1.3 其他常用命令"></a>1.3 其他常用命令</h2><p>部署到GitHub：<code>hexo g -d</code></p>
-<p>启动本地服务器：<code>hexo s</code></p>
-<p>清理缓存和已生成的静态文件（public）：<code>hexo clean</code></p>
-<h1 id="二、Markdown基本语法"><a href="#二、Markdown基本语法" class="headerlink" title="二、Markdown基本语法"></a>二、Markdown基本语法</h1><h2 id="2-1-代码"><a href="#2-1-代码" class="headerlink" title="2.1 代码"></a>2.1 代码</h2><h3 id="行内代码"><a href="#行内代码" class="headerlink" title="行内代码"></a>行内代码</h3><p>执行命令：<code>pip install numpy</code></p>
-<h3 id="python"><a href="#python" class="headerlink" title="python"></a>python</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br></code></pre></td></tr></table></figure>
-
-<h3 id="matlab"><a href="#matlab" class="headerlink" title="matlab"></a>matlab</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs matlab">img = imread(<span class="hljs-string">&#x27;example.jpg&#x27;</span>)<br>imshow(img)<br></code></pre></td></tr></table></figure>
-
-<h3 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>   <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;HelloWorld&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h3 id="bash"><a href="#bash" class="headerlink" title="bash"></a>bash</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt update<br>sudo apt install openssh-server<br>sudo systemctl start ssh<br>sudo systemctl <span class="hljs-built_in">enable</span> ssh<br></code></pre></td></tr></table></figure>
-
-<h2 id="2-2-字体格式"><a href="#2-2-字体格式" class="headerlink" title="2.2 字体格式"></a>2.2 字体格式</h2><p><del>删除线</del>  <s>删除内容</s></p>
-<p><em>斜体字</em>   <em>斜体内容</em></p>
-<p><strong>粗体</strong>  <strong>粗体内容</strong></p>
-<p><em><strong>粗斜体</strong></em>  <em><strong>粗斜体内容</strong></em></p>
-<p><u>下划线</u></p>
-<h2 id="2-3-插入图片"><a href="#2-3-插入图片" class="headerlink" title="2.3 插入图片"></a>2.3 插入图片</h2><p>images:</p>
-<p><img src="/%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%EF%BC%8C%E6%9C%AC%E5%9C%B0%E9%93%BE%E6%8E%A5%E6%88%96%E8%80%85URL%E5%9C%B0%E5%9D%80" srcset="/img/loading.gif" lazyload alt="图片描述，可写可不写，但是中括号要有"></p>
-<blockquote>
-<p>引用内容</p>
+                <blockquote>
+<p>记录如何使用jetson边缘部署检测模型，涉及jetson板子的重装系统、基本配置、环境搭建等。</p>
 </blockquote>
-<h2 id="2-4-换行"><a href="#2-4-换行" class="headerlink" title="2.4 换行"></a>2.4 换行</h2><ul>
-<li>直接在句子后加两个空格</li>
-<li>两句话之间加空行</li>
-<li>在文段中加入<code>&lt;br/&gt;</code></li>
-</ul>
-<h2 id="2-5-链接"><a href="#2-5-链接" class="headerlink" title="2.5 链接"></a>2.5 链接</h2><p><a href="%E9%93%BE%E6%8E%A5%E5%9C%B0%E5%9D%80">链接名称</a><br>&lt;链接地址&gt;</p>
-<h2 id="2-6-列表"><a href="#2-6-列表" class="headerlink" title="2.6 列表"></a>2.6 列表</h2><ul>
-<li>无序列表 1</li>
-</ul>
 <ul>
-<li>无序列表 2</li>
+<li><a href="#%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F">重装系统</a><ul>
+<li><a href="#%E8%A3%85%E6%9C%BA%E6%8F%90%E5%89%8D%E5%87%86%E5%A4%87">装机提前准备</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85jetson-linux%E7%B3%BB%E7%BB%9F">安装jetson Linux系统</a></li>
+<li><a href="#%E7%B3%BB%E7%BB%9F%E8%BF%81%E7%A7%BB%E8%87%B3%E5%9B%BA%E6%80%81%E7%A1%AC%E7%9B%98">系统迁移至固态硬盘</a></li>
 </ul>
-<ul>
-<li>无序列表 3</li>
+</li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE">基本配置</a><ul>
+<li><a href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5">远程连接</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86">配置代理</a></li>
+<li><a href="#%E8%BF%9C%E7%A8%8B%E5%8F%AF%E8%A7%86%E5%8C%96%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5">远程可视化桌面连接</a></li>
 </ul>
-<ol>
-<li><p>有序列表 1</p>
 </li>
-<li><p>有序列表 2</p>
+<li><a href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA">环境搭建</a><ul>
+<li><a href="#%E6%94%AF%E6%8C%81cuad%E7%9A%84opencv%E5%BA%93">支持cuad的opencv库</a></li>
+<li><a href="#torch-and-torchvision">torch and torchvision</a></li>
+<li><a href="#librealsense">librealsense</a></li>
+</ul>
 </li>
-<li><p>有序列表 3</p>
+</ul>
+<h1 id="重装系统"><a href="#重装系统" class="headerlink" title="重装系统"></a>重装系统</h1><h2 id="装机提前准备"><a href="#装机提前准备" class="headerlink" title="装机提前准备"></a>装机提前准备</h2><ul>
+<li>一台装有Ubuntu系统的计算机（可以为虚拟机），在虚拟机上安装有SDKmanager（JetPack SDK）</li>
+<li>为jetson xavier nx板子准备的显示器、键鼠标</li>
+</ul>
+<h2 id="安装jetson-Linux系统"><a href="#安装jetson-Linux系统" class="headerlink" title="安装jetson Linux系统"></a>安装jetson Linux系统</h2><ul>
+<li>卸下固态硬盘，将NX的FC REC引脚和GND引脚短接（第二个和第三个引脚）让NX进入烧写模式，连接USB到自己的电脑。打开JetPack SDK，登录。  <p align = "center">    
+<img  src="jetson-xavier-nx-使用历程/引脚连接.jpg" srcset="/img/loading.gif" lazyload width="300" />
+</p>  </li>
+<li>第一步：不选择host machine，自动识别jetson nx,选择JetPack版本，不选择预装DeepStream。</li>
+<li>第二步仅选择jetson os安装，</li>
+<li>第三步安装，</li>
+<li>第四步完成。</li>
+</ul>
+<h2 id="系统迁移至固态硬盘"><a href="#系统迁移至固态硬盘" class="headerlink" title="系统迁移至固态硬盘"></a>系统迁移至固态硬盘</h2><ul>
+<li><p>完成后使用显示屏与jetson板子连接，装上固态，打开磁盘（disk）管理,格式化，在SSD中打开终端，1.将rootOnNVMe 克隆到本地（<code>git clone https://github.com/jetsonhacks/rootOnNVMe.git</code>），无法下载可通过U盘拷贝</p>
 </li>
-</ol>
-<h2 id="2-7分割线"><a href="#2-7分割线" class="headerlink" title="2.7分割线"></a>2.7分割线</h2><p>分割线：可以在一行中用三个-or*来建立一个分割线，但是注意：在分割线的上面空一行</p>
-<hr>
-<hr>
-<hr>
-<hr>
-<h2 id="2-8常用符号"><a href="#2-8常用符号" class="headerlink" title="2.8常用符号"></a>2.8常用符号</h2><p>⚠️、📢、</p>
-<p><a target="_blank" rel="noopener" href="https://www.webfx.com/tools/emoji-cheat-sheet/">https://www.webfx.com/tools/emoji-cheat-sheet/</a></p>
+<li><p>进入 rootOnNVMe 目录（cd rootOnNVMe）3.执行拷贝文件系统（.&#x2F;copy-rootfs-ssd.sh）4.设置ssd为启动盘（.&#x2F;setup-service.sh）5.重启生效（reboot）</p>
+</li>
+<li><p>重复使用JetPack SDK安装cuda等库。</p>
+</li>
+</ul>
+<h1 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h1><h2 id="远程连接"><a href="#远程连接" class="headerlink" title="远程连接"></a>远程连接</h2><h2 id="配置代理"><a href="#配置代理" class="headerlink" title="配置代理"></a>配置代理</h2><h2 id="远程可视化桌面连接"><a href="#远程可视化桌面连接" class="headerlink" title="远程可视化桌面连接"></a>远程可视化桌面连接</h2><h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><h2 id="支持cuad的opencv库"><a href="#支持cuad的opencv库" class="headerlink" title="支持cuad的opencv库"></a>支持cuad的opencv库</h2><h2 id="torch-and-torchvision"><a href="#torch-and-torchvision" class="headerlink" title="torch and torchvision"></a>torch and torchvision</h2><p>sudo apt-get install libjpeg-dev zlib1g-dev libpython3-dev libopenblas-dev libavcodec-dev libavformat-dev libswscale-dev<br>git clone –branch v0.16.1 <a target="_blank" rel="noopener" href="https://github.com/pytorch/vision">https://github.com/pytorch/vision</a> torchvision  # see below for version of torchvision to download<br>cd torchvision<br>export BUILD_VERSION&#x3D;0.16.1<br>python3 setup.py install –user</p>
+<h2 id="librealsense"><a href="#librealsense" class="headerlink" title="librealsense"></a>librealsense</h2><p>(<a target="_blank" rel="noopener" href="https://github.com/IntelRealSense/librealsense/blob/master/doc/installation_jetson.md">https://github.com/IntelRealSense/librealsense/blob/master/doc/installation_jetson.md</a>)</p>
+<p>‘sudo apt-get install git libssl-dev libusb-1.0-0-dev libudev-dev pkg-config libgtk-3-dev -y<br>.&#x2F;scripts&#x2F;setup_udev_rules.sh<br>mkdir build &amp;&amp; cd build<br>cmake .. -DBUILD_EXAMPLES&#x3D;true -DCMAKE_BUILD_TYPE&#x3D;release -DFORCE_RSUSB_BACKEND&#x3D;false -DBUILD_WITH_CUDA&#x3D;true &amp;&amp; make -j$(($(nproc)-1)) &amp;&amp; sudo make install’</p>
 
                 
               </div>
@@ -387,8 +375,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hexo使用</div>
-      <div>http://example.com/2024/06/12/Hexo使用/</div>
+      <div>jetson xavier nx 使用历程</div>
+      <div>http://example.com/2024/06/14/jetson-xavier-nx-使用历程/</div>
     </div>
     <div class="license-meta">
       
@@ -400,7 +388,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年6月12日</div>
+          <div>2024年6月14日</div>
         </div>
       
       
@@ -432,15 +420,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/06/14/jetson-xavier-nx-%E4%BD%BF%E7%94%A8%E5%8E%86%E7%A8%8B/" title="jetson xavier nx 使用历程">
+                      <a href="/2024/07/30/jetson%E7%B3%BB%E5%88%97%E6%9D%BF%E5%AD%90%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/" title="jetson系列板子远程连接">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">jetson xavier nx 使用历程</span>
+                        <span class="hidden-mobile">jetson系列板子远程连接</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2024/06/12/Hexo%E4%BD%BF%E7%94%A8/" title="Hexo使用">
+                        <span class="hidden-mobile">Hexo使用</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
